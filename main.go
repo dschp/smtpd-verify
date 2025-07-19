@@ -51,7 +51,7 @@ func addEntry(filepath, domain, selector string) {
 	}
 	block, rest := pem.Decode(pubPem)
 	if block == nil || block.Type != "PUBLIC KEY" {
-		log.Fatal("failed to decode PEM public key")
+		log.Fatal("Failed to decode PEM public key")
 	}
 	pubP, err := x509.ParsePKIXPublicKey(block.Bytes)
 	if err != nil {
@@ -69,7 +69,7 @@ func addEntry(filepath, domain, selector string) {
 		k = "ed25519"
 		bs = v
 	default:
-		log.Fatal("can't load private key.")
+		log.Fatal("Can't load private key.")
 	}
 
 	pub64 := base64.StdEncoding.EncodeToString(bs)
